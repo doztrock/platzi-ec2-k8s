@@ -90,7 +90,7 @@ module "ec2-kubernetes-master" {
   name = "kubernetes-master-ec2"
 
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.small"
+  instance_type = "t3.small"
 
   key_name = module.key-kubernetes.key_pair_key_name
 
