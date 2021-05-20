@@ -94,7 +94,7 @@ module "ec2-kubernetes-master" {
 
   key_name = module.key-kubernetes.key_pair_key_name
 
-  subnet_id                   = tolist(data.aws_subnet_ids.all.ids)[0]
+  subnet_id                   = tolist(data.aws_subnet_ids.all.ids)[1]
   associate_public_ip_address = true
 
   vpc_security_group_ids = [module.sg-kubernetes.security_group_id]
