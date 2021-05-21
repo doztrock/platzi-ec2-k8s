@@ -106,7 +106,7 @@ module "ec2-kubernetes-master" {
 
   vpc_security_group_ids = [module.sg-kubernetes.security_group_id]
 
-  user_data = "${path.module}/init.sh"
+  user_data = file("${path.module}/init.sh")
 
   root_block_device = [
     {
@@ -136,7 +136,7 @@ module "ec2-kubernetes-slave" {
 
   vpc_security_group_ids = [module.sg-kubernetes.security_group_id]
 
-  user_data = "${path.module}/init.sh"
+  user_data = file("${path.module}/init.sh")
 
   root_block_device = [
     {
