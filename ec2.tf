@@ -106,6 +106,8 @@ module "ec2-kubernetes-master" {
 
   vpc_security_group_ids = [module.sg-kubernetes.security_group_id]
 
+  user_data = "${path.module}/init.sh"
+
   root_block_device = [
     {
       volume_type = "gp2"
@@ -133,6 +135,8 @@ module "ec2-kubernetes-slave" {
   associate_public_ip_address = true
 
   vpc_security_group_ids = [module.sg-kubernetes.security_group_id]
+
+  user_data = "${path.module}/init.sh"
 
   root_block_device = [
     {
