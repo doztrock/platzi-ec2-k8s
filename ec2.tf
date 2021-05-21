@@ -39,6 +39,13 @@ module "sg-kubernetes" {
   ingress_rules       = ["http-80-tcp", "https-443-tcp", "all-icmp"]
 
   ingress_with_cidr_blocks = concat(
+    [
+      {
+        rule        = "all-all"
+        cidr_blocks = data.aws_vpc.default.cidr_block
+        description = "ALL"
+      }
+    ],
     var.EC2_INSTANCE_CONNECT == true ? [
       {
         rule        = "ssh-tcp"
